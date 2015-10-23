@@ -8,6 +8,13 @@ public class ChatView
 		{
 			String returnedText = "";
 			
+			returnedText = JOptionPane.showInputDialog(null, displayText);
+			
 			return returnedText;
+		}
+		
+		public void displayText(String grabInput)
+		{
+			JOptionPane.showMessageDialog(null, grabInput);
 		}
 	}
