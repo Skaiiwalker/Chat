@@ -23,5 +23,24 @@ public class ChatController
 	public void start()
 	{
 		myDisplay.displayText("Hello " + dumbBot.getUserName());
+		chat();
+	}
+	
+	private void chat()
+	{
+		String conversation = myDisplay.grabInput("What would you like to talk about today");
+		while(dumbBot.lengthChecker(conversation))
+		{
+			if(dumbBot.contentChecker(conversation))
+			{
+				myDisplay.displayText("wow, I had no idea you are interested in " + dumbBot.getContent());
+			}
+			conversation = myDisplay.grabInput(conversation);
+		}
+	}
+	
+	private void shutDown()
+	{
+		
 	}
 }
