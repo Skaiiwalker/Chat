@@ -31,16 +31,13 @@ public class ChatController
 		String conversation = myDisplay.grabInput("What would you like to talk about today");
 		while(dumbBot.lengthChecker(conversation))
 		{
-			if(dumbBot.contentChecker(conversation))
-			{
-				myDisplay.displayText("wow, I had no idea you are interested in " + dumbBot.getContent());
-			}
-			conversation = myDisplay.grabInput(conversation);
+			conversation = myDisplay.grabInput(dumbBot.processConversation(conversation));
 		}
 	}
 	
 	private void shutDown()
 	{
-		
+		myDisplay.displayText("Goodbye, " + dumbBot.getUserName() + ", it has been my pleasure to talk with you.");
+		System.exit(0);
 	}
 }

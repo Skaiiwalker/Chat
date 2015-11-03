@@ -107,11 +107,77 @@ public class Chatbot
 	 */
 	public boolean memeChecker(String currentInput)
 	{
-		boolean isMeme = false;
+		boolean hasMeme = false;
+		
+		//for(memesList.size())
+		{
+			
+		}
 		
 		
 		
-		return isMeme;
+		return hasMeme;
+	}
+	
+	public String processConversation(String currentInput)
+	{
+		String nextConversation = "";
+		int randomTopic = (int) (Math.random() * 5); 
+		//generates a random number between zero and four.
+		//It makes the conversation topic random, though the conversation should be controlled by the user.
+		
+		switch (randomTopic)
+		{
+			case 0:
+				if(memeChecker(currentInput))
+				{
+					nextConversation = "That is a very popular meme this year.  What else do you want to talk about?";
+				}
+				else
+				{
+					nextConversation = "Uh huh, and I'm a little teapot, bub.  (memes)";
+				}
+				break;
+			case 1:
+				if(politicalTopicChecker(currentInput))
+				{
+					nextConversation = "I hate politics.  Can we talk about something else?";
+				}
+				else
+				{
+					nextConversation = "Uh huh, and I'm a little teapot, buddy.  (polics)";
+				}
+				break;
+			case 2:
+				if(contentChecker(currentInput))
+				{
+					nextConversation = "uh huh.  So what things do you like to do in your free time?";
+				}
+				else
+				{
+					nextConversation = "Uh huh, and I'm a little teapot, buster.  (content, free time)";
+				}
+				break;
+			case 3:
+				if(currentInput.length() > 20)
+				{
+					nextConversation = "Holy cow, what just happened?  Are you ok?  Who are you?  I don't remember anything!";
+				}
+				else
+				{
+					nextConversation = "Uh huh, and I'm a little teapot, butter buns.  (length, amnesia)";
+				}
+				break;
+			case 4:
+				nextConversation = "All I hear is yak, yak, yak.  Talk about something else.  ;)";
+				break;
+			default:
+				nextConversation = "I'm a little teapot, short and stout.  Here is my handle, here is my... Wait.  Why don't I have arms?";
+				break;
+			
+		}
+		
+		return nextConversation;
 	}
 	
 	/**
