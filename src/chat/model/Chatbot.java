@@ -145,7 +145,7 @@ public class Chatbot
 				}
 				else
 				{
-					nextConversation = "Uh huh, and I'm a little teapot, buddy.  (polics)";
+					nextConversation = "Uh huh, and I'm a little teapot, buddy.  (politics)";
 				}
 				break;
 			case 2:
