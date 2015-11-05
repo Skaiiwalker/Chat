@@ -36,7 +36,7 @@ public class Chatbot
 		this.memesList.add("doge");
 		this.memesList.add("aliens");
 		this.memesList.add("What if I told you");
-		this.memesList.add("Then everything changed when the Fire Nation attacked");
+		this.memesList.add("fire nation");
 		this.memesList.add("John Cena");
 	}
 	
