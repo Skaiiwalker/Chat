@@ -122,7 +122,7 @@ public class Chatbot
 	public String processConversation(String currentInput)
 	{
 		String nextConversation = "";
-		int randomTopic = (int) (Math.random() * 5); 
+		int randomTopic = (int) (Math.random() * 6); 
 		//generates a random number between zero and four.
 		//It makes the conversation topic random, though the conversation should be controlled by the user.
 		
@@ -170,6 +170,9 @@ public class Chatbot
 				break;
 			case 4:
 				nextConversation = "All I hear is yak, yak, yak.  Talk about something else.  ;)";
+				break;
+			case 5:
+				nextConversation = "There's a sale happening in my bedroom.  All clothes are 100% off.  ;)";
 				break;
 			default:
 				nextConversation = "I'm a little teapot, short and stout.  Here is my handle, here is my... Wait.  Why don't I have arms?";
