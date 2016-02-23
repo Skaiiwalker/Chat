@@ -58,5 +58,10 @@ public class ChatController
 	{
 		return baseFrame;
 	}
+	
+	public String userToChatbot(String content)
+	{
+		return content;
+	}
 }
 

@@ -19,6 +19,10 @@ public class ChatPanel extends JPanel
 	{
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
+		chatArea = new JTextArea(10, 30);
+		typingField = new JTextField(30);
+		promptLabel = new JLabel("Chat with me");
+		submitButton = new JButton("asda");
 		
 		setupPanel();
 		setupLayout();
@@ -49,7 +53,11 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				
+				String userText = typingField.getText();
+				chatArea.append("\nUser " + userText);
+				typingField.setText("");
+				String response = baseController.userToChatbot(userText);
+				chatArea.append("\nChatbot: " + response);
 			}
 		});
 	}
