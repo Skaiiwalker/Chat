@@ -33,7 +33,7 @@ public class ChatPanel extends JPanel
 	{
 		this.setLayout(baseLayout);
 		this.setBackground(Color.WHITE);
-		this.add(chatArea);
+		this.add(textPane);
 		this.add(typingField);
 		this.add(submitButton);
 		this.add(promptLabel);
