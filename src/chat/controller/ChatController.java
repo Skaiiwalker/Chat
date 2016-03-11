@@ -15,15 +15,14 @@ public class ChatController
 	private Chatbot dumbBot;
 	private ChatView myDisplay;
 	private ChatFrame baseFrame;
-	private CTECTwitter chatTwitter;
+	private CTECTwitter myTwitter;
 	
 	public ChatController()
 	{
+		myTwitter = new CTECTwitter(this);
 		myDisplay = new ChatView();
-		String userName = myDisplay.grabInput("What is your name?");
-		dumbBot = new Chatbot(userName);
-		chatTwitter = new CTECTwitter(this);
-		baseFrame = new ChatFrame(this);
+		String user = myDisplay.collectUserText("What is your name?");
+		dumbBot = new Chatbot(user);
 	}
 	
 	public void start()
@@ -49,12 +48,19 @@ public class ChatController
 	
 	public void sendTweet(String tweetText)
 	{
-		chatTwitter.sendTweet(tweetText);
+		myTwitter.sendTweet(tweetText);
 	}
 	
-	public void handleErrors(String errorMessage)
+	public String analyze(String userName)
 	{
-		myDisplay.displayText(errorMessage);
+		String userAnalysis = "The Twitter user " + userName + "has ....";
+		
+		return userAnalysis;
+	}
+	
+	public void handleErrors(String error)
+	{
+		myDisplay.displayText(error);
 	}
 
 	public Chatbot getChatbot()
