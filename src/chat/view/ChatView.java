@@ -39,4 +39,11 @@ public class ChatView
 		{
 			JOptionPane.showMessageDialog(null, displayText, windowMessage, JOptionPane.INFORMATION_MESSAGE, chatIcon);
 		}
+		
+		public String collectUserText(String chatQuestion)
+		{
+			displayText(chatQuestion);
+			String userInput = "";
+			return userInput;
+		}
 	}

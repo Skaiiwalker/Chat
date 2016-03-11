@@ -119,12 +119,22 @@ public class Chatbot
 		return hasMeme;
 	}
 	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		return false;
+	}
+	
 	public String processConversation(String currentInput)
 	{
 		String nextConversation = "";
 		int randomTopic = (int) (Math.random() * 6); 
 		//generates a random number between zero and four.
 		//It makes the conversation topic random, though the conversation should be controlled by the user.
+		
+		if(keyboardMashChecker(currentInput))
+		{
+			return "stop mashing the keyboard!!!";
+		}
 		
 		switch (randomTopic)
 		{
@@ -228,5 +238,10 @@ public class Chatbot
 		
 	}
 	
-	
+	public Boolean quitChecker(String content)
+	{
+		boolean hasQuit;
+		hasQuit = false;
+		return hasQuit;
+	}
 }

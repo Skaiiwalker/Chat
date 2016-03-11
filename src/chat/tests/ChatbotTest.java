@@ -21,6 +21,7 @@ public class ChatbotTest
 	private String userName;
 	private ChatController baseController;
 
+
 	@Before
 	public void setUp() throws Exception
 	{
@@ -150,6 +151,6 @@ public class ChatbotTest
 		assertNotSame("Changed values", oldContent, sampleBot.getContent());
 		assertSame("Setters work", content, sampleBot.getContent());
 	}
-
+	
 	
 }
