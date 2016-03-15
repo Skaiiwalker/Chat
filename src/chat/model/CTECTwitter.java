@@ -2,16 +2,13 @@ package chat.model;
 
 import chat.controller.ChatController;
 import twitter4j.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.util.*;
+import chat.controller.ChatController;
+import java.io.*;
 
 public class CTECTwitter 
 {
-	private ArrayList<String> wordList;
+	private ArrayList<String> wordsList;
 	private ArrayList<Status> statuses;
 	private Twitter chatbotTwitter;
 	private ChatController baseController;
@@ -20,7 +17,7 @@ public class CTECTwitter
 	{
 		this.baseController = baseController;
 		this.statuses = new ArrayList<Status>();
-		this.wordList = new ArrayList<String>();
+		this.wordsList = new ArrayList<String>();
 		this.chatbotTwitter = TwitterFactory.getSingleton();
 		
 	}
@@ -38,10 +35,34 @@ public class CTECTwitter
 		}
 	}
 	
-	public String TopResults(List<String> wordList)
+	public String topResults()
 	{
-		String results = "";
-		return results;
+		String tweetResults = "";
+		
+		int topWordLocation = 0;
+		int topCount = 0;
+		
+		for (int index = 0; index < wordsList.size(); index++)
+		{
+			int wordUseCount = 1;
+			
+			for(int spot = index + 1; spot< wordsList.size(); spot++)
+			{
+				if(wordsList.get(index).equals(wordsList.get(spot)))
+				{
+					wordUseCount++;
+				}
+				if(wordUseCount > topCount)
+				{
+					topCount = wordUseCount;
+					topWordLocation = index;
+				}
+			}
+		}
+		
+		tweetResults = "The top word in the tweets was " + wordsList.get(topWordLocation) + " and it was used " +
+				topCount + " times!";
+		return tweetResults;
 	}
 	
 	public void loadTweets(String twitterHandle) throws TwitterException
@@ -60,26 +81,28 @@ public class CTECTwitter
 			String[] tweetText = currentStatus.getText().split(" ");
 			for (String word : tweetText)
 			{
-				wordList.add(removePunctuation(word).toLowerCase());
+				wordsList.add(removePunctuation(word).toLowerCase());
 			}
 		}
-		removeCommonEnglishWords(wordList);
+		removeCommonEnglishWords(wordsList);
 		removeEmptyText();
 		
 		
 	}
 
+	
 	private void removeEmptyText()
 	{
-		for (int spot = 0; spot < wordList.size(); spot++)
+		for (int spot = 0; spot < wordsList.size(); spot++)
 		{
-			if (wordList.get(spot).equals(""))
+			if (wordsList.get(spot).equals(""))
 			{
-				wordList.remove(spot);
+				wordsList.remove(spot);
 				spot--;
 			}
 		}
 	}
+	
 	
 	private List removeCommonEnglishWords(List<String> wordList)
 	{
@@ -101,6 +124,7 @@ public class CTECTwitter
 		
 		return wordList;
 	}
+	
 	
 	private String[] importWordsToArray()
 	{
@@ -131,15 +155,18 @@ public class CTECTwitter
 		return boringWords;
 	}
 	
+	
 	private void removeTwitterUsernamesFromList(List<String> wordList)
 	{
 		
 	}
 	
+	
 	private String removePunctuation(String currentString)
 	{
 		return null;
 	}
+	
 	
 	public String sampleInvestigation()
 	{
