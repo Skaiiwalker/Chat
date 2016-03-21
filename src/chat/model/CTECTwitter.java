@@ -67,6 +67,8 @@ public class CTECTwitter
 	
 	public void loadTweets(String twitterHandle) throws TwitterException
 	{
+		statuses.clear();
+		wordsList.clear();
 		Paging statusPage = new Paging(1, 200);
 		int page = 1;
 		while (page <= 10)
@@ -90,7 +92,6 @@ public class CTECTwitter
 		
 	}
 
-	
 	private void removeEmptyText()
 	{
 		for (int spot = 0; spot < wordsList.size(); spot++)
@@ -102,7 +103,6 @@ public class CTECTwitter
 			}
 		}
 	}
-	
 	
 	private List removeCommonEnglishWords(List<String> wordList)
 	{
@@ -124,7 +124,6 @@ public class CTECTwitter
 		
 		return wordList;
 	}
-	
 	
 	private String[] importWordsToArray()
 	{
@@ -155,18 +154,15 @@ public class CTECTwitter
 		return boringWords;
 	}
 	
-	
 	private void removeTwitterUsernamesFromList(List<String> wordList)
 	{
 		
 	}
 	
-	
 	private String removePunctuation(String currentString)
 	{
 		return null;
 	}
-	
 	
 	public String sampleInvestigation()
 	{
