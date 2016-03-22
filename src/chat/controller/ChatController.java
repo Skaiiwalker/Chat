@@ -4,6 +4,7 @@ import chat.model.Chatbot;
 import chat.view.ChatView;
 import chat.view.ChatFrame;
 import chat.model.CTECTwitter;
+import twitter4j.*;
 
 /**
  * Application controller for the Chatbot project.
@@ -54,6 +55,15 @@ public class ChatController
 	public String analyze(String userName)
 	{
 		String userAnalysis = "The Twitter user " + userName + "has many tweets. " + myTwitter.topResults();
+		try
+		{
+			myTwitter.loadTweets(userName);
+		}
+		catch (TwitterException error)
+		{
+			handleErrors(error.getErrorMessage());
+		}
+		userAnalysis += myTwitter.topResults();
 		
 		return userAnalysis;
 	}
